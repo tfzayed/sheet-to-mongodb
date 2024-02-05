@@ -62,16 +62,26 @@ export default function ReadSheet() {
     <div className="container">
       <div className="row">
         <div className="col-4">
-          <h1 className="mb-2">Upload xlsx or csv Sheet</h1>
+          <h1 className="mb-5">Upload xlsx or csv Sheet</h1>
           <input
+            id="file"
             type="file"
             onChange={(e) => {
               const file = e.target.files![0];
               readSheet(file);
             }}
-            className="mb-2"
+            accept=".csv, .xlsx"
+            className="mb-5 block w-full text-sm text-slate-500
+            file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-black file:text-white cursor-pointer"
           />
-          <button onClick={handleUpload} className="px-5 py-2 border block">
+          <button
+            onClick={handleUpload}
+            disabled={items?.length === 0}
+            className={`bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded cursor-pointer block disabled:opacity-50`}
+          >
             Upload
           </button>
         </div>
